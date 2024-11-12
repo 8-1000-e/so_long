@@ -6,7 +6,7 @@
 /*   By: edubois- <edubois-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 00:13:28 by edubois-          #+#    #+#             */
-/*   Updated: 2024/11/07 17:45:30 by edubois-         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:14:59 by edubois-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "SRCS/printf/ft_printf.h"
 # include "SRCS/gnl/get_next_line.h"
 # include <fcntl.h>
+#include "SRCS/MacroLibX/includes/mlx.h"
 
 typedef struct s_start
 {
@@ -64,5 +65,6 @@ int		get_x_start(char **tab);
 int		get_y_start(char **tab);
 int		send_error_message(t_data *data);
 int		flood_fill(t_data *data);
+void    start_game(t_data *data);
 
 #endif

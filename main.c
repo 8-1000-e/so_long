@@ -6,7 +6,7 @@
 /*   By: edubois- <edubois-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:24:13 by edubois-          #+#    #+#             */
-/*   Updated: 2024/11/07 19:00:49 by edubois-         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:14:17 by edubois-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ int	main(int ac, char **av)
 	getdata(&data, map);
 	if (!check_data(&data) || !get_parsed_map(map, &data))
 		return (send_error_message(&data));
+	start_game(&data);
 	return (free_map(map));
-	
 }

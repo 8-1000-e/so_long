@@ -6,11 +6,11 @@
 /*   By: edubois- <edubois-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:35:26 by edubois-          #+#    #+#             */
-/*   Updated: 2024/11/07 18:48:24 by edubois-         ###   ########.fr       */
+/*   Updated: 2024/11/14 21:40:06 by edubois-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 static int	c_fill(t_data *data, char *exit_item, t_stack *stack, char *seen)
 {
@@ -37,14 +37,14 @@ static void	fill_map(t_data *data, t_stack *stack, char *seen, char *exit_item)
 		p = stack[--i];
 		if (data->map[p.x][p.y] == '1')
 			continue ;
-		if (seen[p.x * data->max_x + p.y])
+		if (seen[p.x * data-> max_y + p.y])
 			continue ;
-		seen[p.x * data->max_x + p.y] = 1;
+		seen[p.x * data-> max_y + p.y] = 1;
 		if (data->map[p.x][p.y] == 'C')
 			exit_item[1]++;
 		if (data->map[p.x][p.y] == 'E')
 			exit_item[0]++;
-		if (i + 4 >= data->max_x * data->max_y)
+		if (i + 4 >= data-> max_x * data->max_y)
 			continue ;
 		stack[i++] = (t_stack){p.x + 1, p.y};
 		stack[i++] = (t_stack){p.x - 1, p.y};

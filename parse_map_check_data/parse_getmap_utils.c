@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   parse_getmap_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edubois- <edubois-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:35:57 by edubois-          #+#    #+#             */
-/*   Updated: 2024/11/07 17:44:44 by edubois-         ###   ########.fr       */
+/*   Updated: 2024/11/14 00:48:14 by edubois-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	send_error_message(t_data *data)
 {
@@ -28,7 +28,7 @@ int	send_error_message(t_data *data)
 	return (0);
 }
 
-int	get_x_start(char **tab)
+int	get_y_items(char **tab, char c)
 {
 	int	x;
 	int	y;
@@ -38,16 +38,16 @@ int	get_x_start(char **tab)
 	while (tab[x])
 	{
 		y = 0;
-		while (tab[x][y] != 'P' && tab[x][y])
+		while (tab[x][y] != c && tab[x][y])
 			y++;
-		if (tab[x][y] == 'P')
-			return (x);
+		if (tab[x][y] == c)
+			return (y);
 		x++;
 	}
 	return (-1);
 }
 
-int	get_y_start(char **tab)
+int	get_x_items(char **tab, char c)
 {
 	int	x;
 	int	y;
@@ -57,10 +57,10 @@ int	get_y_start(char **tab)
 	while (tab[x])
 	{
 		y = 0;
-		while (tab[x][y] != 'P' && tab[x][y])
+		while (tab[x][y] != c && tab[x][y])
 			y++;
-		if (tab[x][y] == 'P')
-			return (y);
+		if (tab[x][y] == c)
+			return (x);
 		x++;
 	}
 	return (-1);

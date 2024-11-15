@@ -6,11 +6,11 @@
 /*   By: edubois- <edubois-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 15:39:49 by edubois-          #+#    #+#             */
-/*   Updated: 2024/11/07 17:38:57 by edubois-         ###   ########.fr       */
+/*   Updated: 2024/11/15 00:01:30 by edubois-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	nb_items(t_data *data)
 {
@@ -38,15 +38,19 @@ void	getdata(t_data *data, char **tab)
 {
 	t_player	player;
 	t_start		s;
+	t_end		e;
 
+	e.x = get_x_items(tab, 'E');
+	e.y = get_y_items(tab, 'E');
 	data->map = tab;
-	player.x = get_x_start(tab);
-	player.y = get_y_start(tab);
+	player.x = get_x_items(tab, 'P');
+	player.y = get_y_items(tab, 'P');
 	s.x = player.x;
 	s.y = player.y;
+	data->e = e;
 	data->s = s;
-	data->player = player;
-	data->max_x = ft_strllen(tab[0]);
-	data->max_y = nb_line(tab);
+	data->p = player;
+	data->max_y = ft_strllen(tab[0]);
+	data->max_x = nb_line(tab);
 	data->nb_items = nb_items(data);
 }

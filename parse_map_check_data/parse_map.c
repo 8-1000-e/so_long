@@ -6,11 +6,11 @@
 /*   By: edubois- <edubois-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:59:01 by edubois-          #+#    #+#             */
-/*   Updated: 2024/11/07 17:39:42 by edubois-         ###   ########.fr       */
+/*   Updated: 2024/11/14 21:30:28 by edubois-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 static int	parse_opposed_line(char *line)
 {
@@ -39,7 +39,7 @@ int	get_parsed_map(char **tab, t_data *data)
 	int	nb_lines;
 
 	nb_lines = data->max_y + 1;
-	if (!parse_opposed_line(tab[0]) && !parse_opposed_line(tab[data->max_y]))
+	if (!parse_opposed_line(tab[0]) && !parse_opposed_line(tab[data->max_x]))
 		return (0);
 	tab += 1;
 	nb_lines -= 2;

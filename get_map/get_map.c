@@ -6,11 +6,11 @@
 /*   By: edubois- <edubois-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 01:02:36 by edubois-          #+#    #+#             */
-/*   Updated: 2024/11/07 17:28:29 by edubois-         ###   ########.fr       */
+/*   Updated: 2024/11/14 00:47:47 by edubois-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	nb_line_fd(int fd, t_list *lst)
 {

@@ -6,11 +6,11 @@
 /*   By: edubois- <edubois-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:39:00 by edubois-          #+#    #+#             */
-/*   Updated: 2024/11/07 17:44:59 by edubois-         ###   ########.fr       */
+/*   Updated: 2024/11/14 23:23:09 by edubois-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	find_start(t_data *data)
 {
@@ -55,7 +55,7 @@ int	check_format(char **tab)
 			return (0);
 		y = 0;
 	}
-	return (!(x == save_y));
+	return (1);
 }
 
 int	find_exit(t_data *data)
@@ -67,7 +67,7 @@ int	find_exit(t_data *data)
 
 int	check_data(t_data *data)
 {
-	if (data->max_y <= 2 || data->s.x == -1 || data->nb_items == 0)
+	if (data->max_y <= 2 || data->s.x == -1 || data->nb_items == 0 || data->e.x == -1)
 		return (0);
 	return (1);
 }

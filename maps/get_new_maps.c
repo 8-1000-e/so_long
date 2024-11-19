@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define SIZE 500
+#define SIZE 100
 
 void generate_map(char map[SIZE][SIZE]) {
     // Encadre la carte par des murs

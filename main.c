@@ -6,7 +6,7 @@
 /*   By: edubois- <edubois-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:24:13 by edubois-          #+#    #+#             */
-/*   Updated: 2024/11/15 00:29:28 by edubois-         ###   ########.fr       */
+/*   Updated: 2024/11/19 21:42:05 by edubois-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int ac, char **av)
 	static t_data	data = {0};
 	char			**map;
 	int				fd;
-
+// 
 	if (ac > 2)
 		write(2, "Error\n", 6);
 	fd = open(av[1], O_RDONLY);

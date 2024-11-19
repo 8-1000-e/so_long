@@ -6,93 +6,54 @@
 #    By: edubois- <edubois-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/30 23:40:20 by edubois-          #+#    #+#              #
-#    Updated: 2024/11/15 02:17:00 by edubois-         ###   ########.fr        #
+#    Updated: 2024/11/19 22:03:11 by edubois-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBFT_DIR =LIB/libft
-PRINTF_DIR = LIB/printf
-GNL_DIR = LIB/gnl
-DIR_LIB = LIB
+NAME			:=	so_long  
 
-LIBFT_LIB = $(LIBFT_DIR)/libft.a
-PRINTF_LIB = $(PRINTF_DIR)/libftprintf.a
-GNL_LIB = $(GNL_DIR)/gnl.a
+DIR_LIB 		:= 	LIB
+LIBFT_DIR 		:=	$(DIR_LIB)/libft
+PRINTF_DIR 		:=	$(DIR_LIB)/printf
+GNL_DIR 		:=	$(DIR_LIB)/gnl
 
-DIR_MLX         := $(DIR_LIB)/MacroLibX
+LIBFT_LIB 		:= $(LIBFT_DIR)/libft.a
+PRINTF_LIB 		:= $(PRINTF_DIR)/libftprintf.a
+GNL_LIB 		:= $(GNL_DIR)/gnl.a
+
+DIR_MLX     	:= $(DIR_LIB)/MacroLibX
 MLX_INCLUDES    := $(DIR_MLX)/includes
-MLX                := $(DIR_MLX)/libmlx.so
+MLX             := $(DIR_MLX)/libmlx.so
 
-IFLAGS            := -I $(MLX_INCLUDES)/
+IFLAGS          := -I $(MLX_INCLUDES)/
 
-SRCS = main.c\
-	parse_map_check_data/parse_map.c\
-	get_map/get_map.c\
-	get_data/get_data.c\
-	parse_map_check_data/check_map.c\
-	parse_map_check_data/flood_fill.c\
-	parse_map_check_data/parse_getmap_utils.c\
-	game/launch_game.c\
-	get_data/fill_data_game.c\
-	game/destroy_graphic.c\
-	game/graphic/put_image.c\
-	game/check_action.c\
-	game/manage_hook.c\
-	
+SRCS = main.c											\
+	SRCS/parse_map_check_data/parse_map.c				\
+	SRCS/get_map/get_map.c								\
+	SRCS/get_data/get_data.c							\
+	SRCS/parse_map_check_data/check_map.c				\
+	SRCS/parse_map_check_data/flood_fill.c				\
+	SRCS/parse_map_check_data/parse_getmap_utils.c		\
+	SRCS/game/launch_game.c								\
+	SRCS/get_data/fill_data_game.c						\
+	SRCS/game/destroy_graphic.c							\
+	SRCS/game/graphic/put_image.c						\
+	SRCS/game/check_action.c							\
+	SRCS/game/manage_hook.c								\
+	SRCS/game/make_mouvement.c							\
+	SRCS/game/print_moov.c								\
+	SRCS/game/manage_rhino.c							\
 
-OBJS = $(SRCS:.c=.o)
+OBJS 			:= $(SRCS:.c=.o)
 
-CC = @cc
-FLAGS = -Wall -Wextra -Werror -g
+CC 				:= @cc
+FLAGS 			:= -Wall -Wextra -Werror -g
 
-all: $(LIBFT_LIB) $(PRINTF_LIB) $(GNL_LIB) $(OBJS)
-	$(CC) $(FLAGS) $(IFLAGS) -lm -lSDL2 $(OBJS) $(LIBFT_LIB) $(PRINTF_LIB) $(GNL_LIB) $(MLX)
-	@echo "                                         ░▒▓███████▓▒░░▒▓██████▓▒░░             ▒▓█▓▒░      ░▒▓██████▓▒░░▒▓███████▓▒░ ░▒▓██████▓▒░                                          "
-	@echo "                                        ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░             ▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░                                         "
-	@echo "                                        ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░             ▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░                                                "
-	@echo "                                         ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░             ▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒▒▓███▓▒░                                         "
-	@echo "                                               ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░             ▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░                                         "
-	@echo "                                               ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░             ▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░                                         "
-	@echo "                                        ░▒▓███████▓▒░ ░▒▓██████▓▒░▒ ▓████████▓▒ ▒▓████████▓▒░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░                                          "
-	@echo "                                                                                      ██                                                                                    "
-	@echo "                                                                                      ██                                                                                    "
-	@echo "                                                                                      ██                                                                                    "
-	@echo "                                                                                      ██                                                                                    "
-	@echo "                                                                                      ██                                                                                    "
-	@echo "                                                                                      ██                                                                                    "
-	@echo "                                                                                      ██                                                                                    "
-	@echo "                                                                                      ██                                                                                    "
-	@echo "                                                                                      ██                                                                                    "
-	@echo "                                                                                      ██                                                                                    "
-	@echo "                                                                                    ██  ██                                                                                  "
-	@echo "                                                                                  ██▒▒  ▒▒██                                                                                "
-	@echo "                                                                                ██▒▒▒▒  ▒▒▒▒██                                                                              "
-	@echo "                                                                              ██▒▒▒▒▒▒  ▒▒▒▒▒▒██                                                                            "
-	@echo "                                                                          ████▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒████                                                                        "
-	@echo "                                                                        ██▓▓▒▒▒▒▒▒████  ████▒▒▒▒▒▒▓▓██                                                                      "
-	@echo "                                                                      ██▓▓▓▓▒▒▒▒██▓▓▒▒  ▒▒▓▓██▒▒▓▓▓▓▒▒██                                                                    "
-	@echo "                                                                    ██▓▓▓▓▓▓▓▓██████      ██████▓▓▓▓▓▓▓▓██                                                                  "
-	@echo "                                                                    ██▓▓▓▓▓▓██▒▒▒▒▒▒██  ██▒▒▒▒▒▒██▓▓▓▓▓▓██                                                                  "
-	@echo "                                                                      ██████▒▒▒▒▒▒▒▒██▒▒██▒▒▒▒▒▒▒▒██████                                                                    "
-	@echo "                                                                          ██▒▒▒▒▒▒██▒▒▒▒▒▒██▓▓▒▒▒▒██                                                                        "
-	@echo "                                                                        ██▒▒▒▒▓▓██▓▓▒▒▒▒▒▒▒▒██▒▒▒▒▒▒██                                                                      "
-	@echo "                                                                        ██▒▒▒▒██▓▓▒▒▒▒██▒▒▒▒▒▒██▒▒▒▒██                                                                      "
-	@echo "                                                                          ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                                                                        "
-	@echo "                                                                            ████▒▒▒▒██████▒▒▒▒████                                                                          "
-	@echo "                                                                                ████▒▒▒▒▒▒████                                                                              "
-	@echo "                                                                              ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                                                                            "
-	@echo "                                                                            ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                                                                          "
-	@echo "                                                                          ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                                                                        "
-	@echo "                                                                          ██▒▒▒▒████▒▒▒▒▒▒████▒▒▒▒██                                                                       "
-	@echo "                                                                          ██▒▒██    ██▒▒██    ██▒▒██                                                                        "
-	@echo "                                                                          ██▒▒██  ██▒▒▒▒▒▒██  ██▒▒██                                                                        "
-	@echo "                                                                          ██▒▒████▒▒▒▒▒▒▒▒▒▒████▒▒██                                                                        "
-	@echo "                                                                          ██▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▒▒██                                                                        "
-	@echo "                                                                          ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                                                                        "
-	@echo "                                                                          ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                                                                        "
-	@echo "                                                                            ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                                                                          "
-	@echo "                                                                              ████▒▒▒▒▒▒▒▒▒▒████                                                                            "
-	@echo "                                                                                  ██████████                                                                                "
+all: $(NAME)
+
+$(NAME):	$(LIBFT_LIB) $(PRINTF_LIB) $(GNL_LIB) $(OBJS)
+	$(CC) $(FLAGS) $(IFLAGS) -o $(NAME) -lm -lSDL2 $(OBJS) $(LIBFT_LIB) $(PRINTF_LIB) $(GNL_LIB) $(MLX)
+	@echo $(ART)
 
 $(MLX):
 	-s -C $(DIR_MLX) --no-print-directory -j
@@ -125,3 +86,5 @@ re: fclean all
 
 .PHONY: all clean fclean re
 .SILENT:
+
+ART	:= "                                     ░▒▓███████▓▒░░▒▓██████▓▒░░             ▒▓█▓▒░      ░▒▓██████▓▒░░▒▓███████▓▒░ ░▒▓██████▓▒░                                                                                   ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░             ▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░                                                                                  ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░             ▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░                                                                                          ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░             ▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒▒▓███▓▒░                                                                                         ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░             ▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░                                                                                         ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░             ▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░                                                                                  ░▒▓███████▓▒░ ░▒▓██████▓▒░▒ ▓████████▓▒ ▒▓████████▓▒░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░                                                                                                                                 ██                                                                                                                                                                           ██                                                                                                                                                                           ██                                                                                                                                                                           ██                                                                                                                                                                           ██                                                                                                                                                                           ██                                                                                                                                                                           ██                                                                                                                                                                           ██                                                                                                                                                                           ██                                                                                                                                                                           ██                                                                                                                                                                         ██  ██                                                                                                                                                                     ██▒▒  ▒▒██                                                                                                                                                                 ██▒▒▒▒  ▒▒▒▒██                                                                                                                                                             ██▒▒▒▒▒▒  ▒▒▒▒▒▒██                                                                                                                                                       ████▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒████                                                                                                                                                 ██▓▓▒▒▒▒▒▒████  ████▒▒▒▒▒▒▓▓██                                                                                                                                             ██▓▓▓▓▒▒▒▒██▓▓▒▒  ▒▒▓▓██▒▒▓▓▓▓▒▒██                                                                                                                                         ██▓▓▓▓▓▓▓▓██████      ██████▓▓▓▓▓▓▓▓██                                                                                                                                       ██▓▓▓▓▓▓██▒▒▒▒▒▒██  ██▒▒▒▒▒▒██▓▓▓▓▓▓██                                                                                                                                         ██████▒▒▒▒▒▒▒▒██▒▒██▒▒▒▒▒▒▒▒██████                                                                                                                                               ██▒▒▒▒▒▒██▒▒▒▒▒▒██▓▓▒▒▒▒██                                                                                                                                                 ██▒▒▒▒▓▓██▓▓▒▒▒▒▒▒▒▒██▒▒▒▒▒▒██                                                                                                                                               ██▒▒▒▒██▓▓▒▒▒▒██▒▒▒▒▒▒██▒▒▒▒██                                                                                                                                                 ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                                                                                                                                                     ████▒▒▒▒██████▒▒▒▒████                                                                                                                                                           ████▒▒▒▒▒▒████                                                                                                                                                             ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                                                                                                                                                         ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                                                                                                                                                     ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                                                                                                                                                   ██▒▒▒▒████▒▒▒▒▒▒████▒▒▒▒██                                                                                                                                                   ██▒▒██    ██▒▒██    ██▒▒██                                                                                                                                                   ██▒▒██  ██▒▒▒▒▒▒██  ██▒▒██                                                                                                                                                   ██▒▒████▒▒▒▒▒▒▒▒▒▒████▒▒██                                                                                                                                                   ██▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▒▒██                                                                                                                                                   ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                                                                                                                                                   ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                                                                                                                                                     ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                                                                                                                                                         ████▒▒▒▒▒▒▒▒▒▒████                                                                                                                                                               ██████████                                                                                "

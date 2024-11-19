@@ -6,7 +6,7 @@
 /*   By: edubois- <edubois-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 00:13:28 by edubois-          #+#    #+#             */
-/*   Updated: 2024/11/15 01:27:29 by edubois-         ###   ########.fr       */
+/*   Updated: 2024/11/19 22:43:33 by edubois-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <fcntl.h>
 #include "LIB/MacroLibX/includes/mlx.h"
 #include "SDL2/SDL_scancode.h"
+#include <unistd.h>
+#include "stdlib.h"
+#include <time.h>
 
 typedef struct s_start
 {
@@ -45,25 +48,35 @@ typedef struct s_stack
 	int	y;
 }	t_stack;
 
+typedef struct s_rhino
+{
+	int	x;
+	int	y;
+}	t_rhino;
+
 typedef struct s_data
 {
 	int			nb_items;
 	t_end		e;
 	t_player	p;
 	t_start		s;
+	t_rhino		r;
 	char		**map;
 	int			max_x;
 	int			max_y;
 	int			items_picked;
+	unsigned int repeat;
 	void *mlx;
 	void *win;
 	void *background;
 	void *walls;
 	void *items;
-	void *player;
 	void *exit;
+	void *rhino;
 	char pressed[SDL_NUM_SCANCODES];
-	int			nb_moove;
+	void *numbers[10];
+	unsigned int			nb_moove;
+	void *player;
 }	t_data;
 
 int		check_data(t_data *data);
@@ -87,8 +100,8 @@ int		flood_fill(t_data *data);
 void    start_game(t_data *data);
 void	fill_data(t_data *data);
 void 	put_exit(t_data *data);
-void 	put_items(t_data *data);
-void 	put_walls(t_data *data);
+void 	put_rhino(t_data *data);
+void 	put_walls_items(t_data *data);
 void 	put_background(t_data *data);
 void 	put_player(t_data *data);
 void	destroy_all(t_data *data);
@@ -104,16 +117,22 @@ void	right_pressed(t_data *data);
 void	left_pressed(t_data *data);
 void	esc_pressed(t_data *data);
 int		check_update(void *d);
-void	replace_in_tab(t_data *data, int x, int y);
-void	replace_w_background(t_data *data);
+void	replace_in_tab(t_data *data, int x, int y, char c);
+void	replace_w_img(t_data *data, int x, int y, void *img);
 void	create_map(t_data *data);
-int key_hook(int key, void* d);
-int key_hook_up(int key, void* d);
-int windows_hook(int event, void* param);
-
-
-
-
+int 	key_hook(int key, void* d);
+int 	key_hook_up(int key, void* d);
+int 	windows_hook(int event, void* param);
+void	put_nb_moove(t_data *data);
+int		print_number(t_data *data, int nb, int x);
+void	make_action(t_data *data, unsigned int old_nb_moove);
+void	put_nb_moove(t_data *data);
+void    check_for_rhino(t_data *data);
+void	moov_rhino(t_data *data);
+int		moov_rhino_left(t_data *data);
+int		moov_rhino_right(t_data *data);
+int		moov_rhino_up(t_data *data);
+int		moov_rhino_down(t_data *data);
 
 
 #endif
